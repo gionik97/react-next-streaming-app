@@ -1,5 +1,3 @@
-import { Main } from "next/document";
-
 const ForYouList = (props) => {
   const loopComp = (comp, digit) => {
     let thumbnails = [];
@@ -15,7 +13,10 @@ const ForYouList = (props) => {
       <div className="foryou-list__thumbnails">
         {loopComp(
           <div className="foryou-list__thumbnail">
-            <img src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg" />
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg"
+              alt=""
+            />
             <div className="foryou-list__top-layer">
               <i className="fas fa-play" />
             </div>

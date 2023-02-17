@@ -1,5 +1,3 @@
-import { Main } from "next/document";
-
 const Account = (props) => {
   const loopComp = (comp, digit) => {
     let thumbnails = [];
@@ -16,7 +14,10 @@ const Account = (props) => {
         <div className="account__watch-list">
           {loopComp(
             <div className="account__watch-video">
-              <img src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg" />
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg"
+                alt=""
+              />
               <div className="account__watch-overlay">
                 <div className="account__watch-buttons">
                   <div className="account__watch-circle">

@@ -1,5 +1,3 @@
-import { Main } from "next/document";
-
 const FeaturedMedia = (props) => {
   return (
     <div className="featured-media">

@@ -1,5 +1,3 @@
-import { Main } from "next/document";
-
 const PosterView = (props) => {
   const loopComp = (comp, digit) => {
     let thumbnails = [];
@@ -15,7 +13,10 @@ const PosterView = (props) => {
       <div className="poster-view__thumbnails">
         {loopComp(
           <div className="poster-view__thumbnail">
-            <img src="https://i.ebayimg.com/images/g/tTEAAOSwzRlZgWnw/s-l1600.jpg" />
+            <img
+              src="https://i.ebayimg.com/images/g/tTEAAOSwzRlZgWnw/s-l1600.jpg"
+              alt=""
+            />
             <div className="poster-view__top-layer">
               <i className="fas fa-play" />
             </div>

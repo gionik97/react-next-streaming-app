@@ -1,5 +1,3 @@
-import { Main } from "next/document";
-
 const CastInfo = (props) => {
   return (
     <div className="cast-info">

@@ -1,5 +1,3 @@
-import { Main } from "next/document";
-
 const SearchModal = (props) => {
   const loopComp = (comp, digit) => {
     let thumbnails = [];
@@ -26,7 +24,10 @@ const SearchModal = (props) => {
       <div className="search-modal__thumbnails">
         {loopComp(
           <div className="search-modal__thumbnail">
-            <img src="https://i.ebayimg.com/images/g/tTEAAOSwzRlZgWnw/s-l1600.jpg" />
+            <img
+              src="https://i.ebayimg.com/images/g/tTEAAOSwzRlZgWnw/s-l1600.jpg"
+              alt=""
+            />
             <div className="search-modal__top-layer">
               <i className="fas fa-play" />
             </div>

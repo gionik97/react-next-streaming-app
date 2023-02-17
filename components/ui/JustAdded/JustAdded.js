@@ -1,5 +1,3 @@
-import { Main } from "next/document";
-
 const JustAdded = (props) => {
   const loopComp = (comp, digit) => {
     let thumbnails = [];
@@ -15,7 +13,10 @@ const JustAdded = (props) => {
       <div className="just-added__thumbnails">
         {loopComp(
           <div className="just-added__thumbnail">
-            <img src="https://i.ebayimg.com/images/g/tTEAAOSwzRlZgWnw/s-l1600.jpg" />
+            <img
+              src="https://i.ebayimg.com/images/g/tTEAAOSwzRlZgWnw/s-l1600.jpg"
+              alt=""
+            />
             <div className="just-added__top-layer">
               <i className="fas fa-play" />
             </div>

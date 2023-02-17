@@ -1,5 +1,3 @@
-import { Main } from "next/document";
-
 const SideNav = (props) => {
   return (
     <div className="side-nav">
