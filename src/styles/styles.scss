@@ -1,5 +1,4 @@
 @use "reset";
-@use "login";
 @use "create-user";
 @use "../../components/ui/Header/header";
 @use "../../components/ui/SideNav/side-nav";
@@ -10,6 +9,7 @@
 @use "../../components/ui/CastInfo/cast-info";
 @use "../../components/ui/Account/account";
 @use "../../components/ui/SearchModal/search-modal";
+@use "../../components/ui/Login/login";
 
 html,
 body {

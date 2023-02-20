@@ -1,35 +1,22 @@
-import Head from "next/head";
-import Image from "next/image";
-import App from "./_app";
-import { Inter } from "@next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useStateContext } from "components/HBOProvider";
+import Login from "components/ui/Login/Login";
 
 export default function Home() {
+  const globalState = useStateContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    const loggedIn = false;
+    if (loggedIn === false) {
+      router.push("/create");
+    }
+  }, []);
+
   return (
     <div>
-      <div className="login-user">
-        <div className="login-user__top">
-          <div className="login-user__logo" />
-          <span className="login-user__title">Who Is Watching?</span>
-        </div>
-
-        <div className="login-user__form">
-          <div className="login-user__user-box">
-            <img
-              className="login-user__user-img"
-              src="https://images.unsplash.com/photo-1505503693641-1926193e8d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=3422df4a46d2c81c35bf4687a2fa9c52"
-              alt=""
-            />
-            <div className="login-user__user-name">Jeremy</div>
-          </div>
-        </div>
-
-        <div className="login-user__user-buttons">
-          <button className="login-user__adult">Add Adult</button>
-          <button className="login-user__kid">Add Kid</button>
-        </div>
-      </div>
+      <Login />
     </div>
   );
 }
