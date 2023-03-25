@@ -3,10 +3,8 @@ import { useRouter } from "next/router";
 import { useStateContext } from "components/HBOProvider";
 import MainLayout from "components/layouts/MainLayout";
 import FeaturedMedia from "components/ui/FeaturedMedia/FeaturedMedia";
-import ForYouList from "components/ui/ForYouList/ForYouList";
-import JustAdded from "components/ui/JustAdded/JustAdded";
-import PosterView from "components/ui/PosterView/PosterView";
 import AuthCheck from "components/AuthCheck";
+import MediaRow from "components/ui/MediaRow/MediaRow";
 
 export default function Home() {
   const globalState = useStateContext();
@@ -17,9 +15,11 @@ export default function Home() {
   return AuthCheck(
     <MainLayout>
       <FeaturedMedia />
-      <ForYouList />
-      <JustAdded />
-      <PosterView />
+      <MediaRow title="Movies" type="large-v" />
+      <MediaRow title="Series" type="small-h" />
+      <MediaRow title="Action" type="small-v" />
+      <MediaRow title="Horror" type="large-v" />
+      <MediaRow title="Sci-fi" type="small-v" />
     </MainLayout>
   );
 }
