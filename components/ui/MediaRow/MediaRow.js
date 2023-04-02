@@ -1,7 +1,26 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const MediaRow = (props) => {
   const [loadingData, setLoadingData] = useState(true);
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/${props.endpoint}&api_key=cc84e59b5bff0efa8dfb2e7f1aabf101&language=en-US`
+      )
+      .then(function (response) {
+        setMovies(response.data.results);
+        setLoadingData(false);
+        console.log("success response for " + props.title);
+        console.log("response", response);
+      })
+      .catch(function (error) {
+        console.log("error response for " + props.title);
+        console.log(error);
+      });
+  }, []);
 
   const loopComp = (comp, digit) => {
     let thumbnails = [];
@@ -12,10 +31,12 @@ const MediaRow = (props) => {
   };
 
   const showThumbnails = () => {
-    setTimeout(() => setLoadingData(false), 3000);
     return loadingData
       ? loopComp(<Skeleton />, 10)
-      : loopComp(<Thumbnail />, 10);
+      : movies.map((movie) => {
+          console.log("movie", movie);
+          return <Thumbnail movieData={movie} />;
+        });
   };
 
   return (
@@ -26,11 +47,13 @@ const MediaRow = (props) => {
   );
 };
 
-const Thumbnail = () => {
+const Thumbnail = (props) => {
+  // console.log("movie", props.movie);
   return (
     <div className="media-row__thumbnail">
       <img
-        src="https://i.ebayimg.com/images/g/tTEAAOSwzRlZgWnw/s-l1600.jpg"
+        // src="https://i.ebayimg.com/images/g/tTEAAOSwzRlZgWnw/s-l1600.jpg"
+        src={`https://image.tmdb.org/t/p/original${props.movieData.poster_path}`}
         alt=""
       />
       <div className="media-row__top-layer">
