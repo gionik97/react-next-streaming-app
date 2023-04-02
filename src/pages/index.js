@@ -3,10 +3,8 @@ import { useRouter } from "next/router";
 import { useStateContext } from "components/HBOProvider";
 import MainLayout from "components/layouts/MainLayout";
 import FeaturedMedia from "components/ui/FeaturedMedia/FeaturedMedia";
-import ForYouList from "components/ui/ForYouList/ForYouList";
-import JustAdded from "components/ui/JustAdded/JustAdded";
-import PosterView from "components/ui/PosterView/PosterView";
 import AuthCheck from "components/AuthCheck";
+import MediaRow from "components/ui/MediaRow/MediaRow";
 
 export default function Home() {
   const globalState = useStateContext();
@@ -17,9 +15,31 @@ export default function Home() {
   return AuthCheck(
     <MainLayout>
       <FeaturedMedia />
-      <ForYouList />
-      <JustAdded />
-      <PosterView />
+      <MediaRow
+        title="Movies"
+        type="large-v"
+        endpoint="discover/movie?with_genres=28&primary_release_year=2022"
+      />
+      <MediaRow
+        title="Series"
+        type="small-h"
+        endpoint="discover/movie?with_genres=28&primary_release_year=2022"
+      />
+      <MediaRow
+        title="Action"
+        type="small-v"
+        endpoint="discover/movie?with_genres=28&primary_release_year=2022"
+      />
+      <MediaRow
+        title="Horror"
+        type="large-v"
+        endpoint="discover/movie?with_genres=27&primary_release_year=2022"
+      />
+      <MediaRow
+        title="Sci-fi"
+        type="small-v"
+        endpoint="discover/movie?with_genres=878&primary_release_year=2022"
+      />
     </MainLayout>
   );
 }
