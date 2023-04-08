@@ -1,3 +1,4 @@
+import React from "react";
 import { useStateContext } from "components/HBOProvider";
 
 const Account = (props) => {
@@ -6,7 +7,7 @@ const Account = (props) => {
   const loopComp = (comp, digit) => {
     let thumbnails = [];
     for (let i = 1; i <= digit; i++) {
-      thumbnails.push(comp);
+      thumbnails.push(React.cloneElement(comp, { key: i }));
     }
     return thumbnails;
   };
