@@ -1,43 +1,67 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 const CastInfo = (props) => {
+  const [loadingData, setLoadingData] = useState(true);
+  const [credits, setCredits] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/${
+          props.mediaType === "movie" ? "movie" : "tv"
+        }/${
+          props.mediaID
+        }/credits?api_key=cc84e59b5bff0efa8dfb2e7f1aabf101&language=en-US`
+      )
+      .then(function (response) {
+        setCredits(response.data);
+        setLoadingData(false);
+        // console.log("success response for cast and crew");
+        // console.log("response", response);
+      })
+      .catch(function (error) {
+        console.log("error response for cast and crew");
+        console.log(error);
+      });
+  }, [credits]);
+
+  const showCast = () => {
+    if (loadingData !== true) {
+      return credits.cast.map((item) => {
+        return (
+          <ul className="cast-info__crew">
+            <li>{item.character}</li>
+            <li>{item.name}</li>
+          </ul>
+        );
+      });
+    } else {
+      return <div>Loading Cast...</div>;
+    }
+  };
+
+  const showCrew = () => {
+    if (loadingData !== true) {
+      return credits.crew.map((item) => {
+        return (
+          <ul className="cast-info__crew">
+            <li>{item.job}</li>
+            <li>{item.name}</li>
+          </ul>
+        );
+      });
+    } else {
+      return <div>Loading Crew...</div>;
+    }
+  };
+
   return (
     <div className="cast-info">
-      <div className="cast-info__group-title">Cast & Crew</div>
-      <div className="cast-info__list">
-        <ul className="cast-info__crew">
-          <li>Greg</li>
-          <li>George Lucas</li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>Samantha</li>
-          <li>George Lucas</li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>Anna</li>
-          <li>George Lucas</li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>James</li>
-          <li>George Lucas</li>
-        </ul>
-        <ul className="cast-info__crew">
-          <li>Brandon</li>
-          <li>George Lucas</li>
-        </ul>
-      </div>
-      <div className="cast-info__group-title">Director</div>
-      <div className="cast-info__list">
-        <ul className="cast-info__crew">
-          <li>Jordan</li>
-          <li>George Lucas</li>
-        </ul>
-      </div>
-      <div className="cast-info__group-title">Camera Operator</div>
-      <div className="cast-info__list">
-        <ul className="cast-info__crew">
-          <li>Scott</li>
-          <li>George Lucas</li>
-        </ul>
-      </div>
+      <div className="cast-info__group-title">Cast</div>
+      <div className="cast-info__list">{showCast()}</div>
+      <div className="cast-info__group-title">Crew</div>
+      <div className="cast-info__list">{showCrew()}</div>
     </div>
   );
 };
