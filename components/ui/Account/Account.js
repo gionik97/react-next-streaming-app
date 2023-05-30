@@ -4,13 +4,13 @@ import { useStateContext } from "components/HBOProvider";
 const Account = (props) => {
   const globalState = useStateContext();
 
-  const loopComp = (comp, digit) => {
-    let thumbnails = [];
-    for (let i = 1; i <= digit; i++) {
-      thumbnails.push(React.cloneElement(comp, { key: i }));
-    }
-    return thumbnails;
-  };
+  // const loopComp = (comp, digit) => {
+  //   let thumbnails = [];
+  //   for (let i = 1; i <= digit; i++) {
+  //     thumbnails.push(React.cloneElement(comp, { key: i }));
+  //   }
+  //   return thumbnails;
+  // };
 
   return (
     <div
@@ -21,25 +21,22 @@ const Account = (props) => {
       <div className="account__details">
         <div className="account__title">My List</div>
         <div className="account__watch-list">
-          {loopComp(
-            <div className="account__watch-video">
-              <img
-                src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg"
-                alt=""
-              />
-              <div className="account__watch-overlay">
-                <div className="account__watch-buttons">
-                  <div className="account__watch-circle">
-                    <i className="fas fa-play" />
-                  </div>
-                  <div className="account__watch-circle">
-                    <i className="fas fa-times" />
-                  </div>
+          <div className="account__watch-video">
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg"
+              alt=""
+            />
+            <div className="account__watch-overlay">
+              <div className="account__watch-buttons">
+                <div className="account__watch-circle">
+                  <i className="fas fa-play" />
+                </div>
+                <div className="account__watch-circle">
+                  <i className="fas fa-times" />
                 </div>
               </div>
-            </div>,
-            3
-          )}
+            </div>
+          </div>
         </div>
       </div>
       <div className="account__menu">
