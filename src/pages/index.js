@@ -30,7 +30,7 @@ export default function Home() {
         <MediaRow
           title="Movies"
           type="large-v"
-          endpoint="discover/movie?sort_by=popularity.desc&primary_release_year=2022"
+          endpoint="discover/movie?sort_by=popularity.desc&primary_release_year=2021"
         />
       </LazyLoad>
       <LazyLoad
@@ -41,7 +41,7 @@ export default function Home() {
           title="Series"
           type="small-h"
           mediaType="tv"
-          endpoint="discover/tv?primary_release_year=2023"
+          endpoint="discover/tv?sort_by=popularity.desc&language=en-US&primary_release_year=2020"
         />
       </LazyLoad>
       <LazyLoad
@@ -51,7 +51,7 @@ export default function Home() {
         <MediaRow
           title="Action"
           type="small-v"
-          endpoint="discover/movie?with_genres=28&primary_release_year=2022"
+          endpoint="discover/movie?with_genres=28&primary_release_year=2021"
         />
       </LazyLoad>
       <LazyLoad
@@ -61,7 +61,7 @@ export default function Home() {
         <MediaRow
           title="Horror"
           type="large-v"
-          endpoint="discover/movie?with_genres=27&primary_release_year=2022"
+          endpoint="discover/movie?with_genres=27&primary_release_year=2021"
         />
       </LazyLoad>
       <LazyLoad
@@ -71,7 +71,7 @@ export default function Home() {
         <MediaRow
           title="Sci-fi"
           type="small-v"
-          endpoint="discover/movie?with_genres=878&primary_release_year=2022"
+          endpoint="discover/movie?with_genres=878&primary_release_year=2021"
         />
       </LazyLoad>
     </MainLayout>
