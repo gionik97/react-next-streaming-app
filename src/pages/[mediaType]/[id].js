@@ -10,8 +10,8 @@ import LazyLoad from "parm-react-lazyload";
 
 export default function SingleMediaPage(props) {
   const router = useRouter();
-  const [mediaData, setMediaData] = useState(false);
-  console.log("props.params.mediaType", props.params.mediaType);
+  // const [mediaData, setMediaData] = useState(false);
+  // console.log("props.params.mediaType", props.params.mediaType);
   // console.log(props);
   // useEffect(() => {
   //   axios
@@ -27,7 +27,7 @@ export default function SingleMediaPage(props) {
   //     });
   // }, [mediaData]);
   // console.log("props.params", props.mediaData);
-  console.log("props.params.mediaType", props.params.mediaType);
+  // console.log("props.params.mediaType", props.params.mediaType);
   return (
     <MainLayout>
       <FeaturedMedia
@@ -40,6 +40,8 @@ export default function SingleMediaPage(props) {
         location=""
         linkUrl="/movies/id"
         type="single"
+        mediaType={props.params.mediaType}
+        mediaId={props.params.id}
       />
       <LazyLoad
         offset={-400}

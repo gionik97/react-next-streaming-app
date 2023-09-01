@@ -28,9 +28,11 @@ const Header = (props) => {
             <i className="fas fa-search" />
           </div>
         </div>
+
         <Link href="/">
           <div className="top-header__logo"></div>
         </Link>
+
         <div
           className="top-header__account"
           onClick={() =>

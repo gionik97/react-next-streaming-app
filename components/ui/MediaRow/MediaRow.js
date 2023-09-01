@@ -15,8 +15,6 @@ const MediaRow = (props) => {
       .then(function (response) {
         setMovies(shuffleArray(response.data.results));
         setLoadingData(false);
-        // console.log("success response for " + props.title);
-        // console.log("response", response);
       })
       .catch(function (error) {
         console.log("error response for " + props.title);
@@ -29,7 +27,6 @@ const MediaRow = (props) => {
     for (let i = 1; i <= digit; i++) {
       thumbnails.push(React.cloneElement(comp, { key: i }));
     }
-    // console.log("thumb", thumbnails);
     return thumbnails;
   };
 
