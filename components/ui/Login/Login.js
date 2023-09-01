@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useStateContext } from "components/HBOProvider";
 import { useRouter } from "next/router";
 import ls from "local-storage";
@@ -10,16 +10,16 @@ const Login = () => {
   const [loadingUsers, setLoadingUsers] = useState(false);
   let { hasMounted } = useMounted();
 
-  let users = ls("users") !== null ? ls("users") : [];
+  const users = useMemo(() => {
+    return ls("users") !== null ? ls("users") : [];
+  }, []);
 
   useEffect(() => {
     if (users < 1) {
       setLoadingUsers(false);
     }
-    console.log("load effect", users);
-  }, []);
+  }, [users]);
 
-  console.log("declared users", users);
   const selectUser = (id) => {
     ls("activeUID", id);
     router.push("/");
