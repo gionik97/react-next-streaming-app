@@ -1,14 +1,64 @@
+import React from "react";
 import { useStateContext } from "components/HBOProvider";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import ls from "local-storage";
 
 const Account = (props) => {
   const globalState = useStateContext();
+  const router = useRouter();
+  const [watchList, setWatchList] = useState(false);
 
-  const loopComp = (comp, digit) => {
-    let thumbnails = [];
-    for (let i = 1; i <= digit; i++) {
-      thumbnails.push(comp);
+  useEffect(() => {
+    if (globalState.accountModalOpen) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
     }
-    return thumbnails;
+  }, [globalState.accountModalOpen]);
+
+  useEffect(() => {
+    if (globalState.watchList !== null) {
+      setWatchList(true);
+    }
+  }, []);
+
+  const watchMedia = (url) => {
+    router.push(url);
+    globalState.setAccountModalOpen(!globalState.accountModalOpen);
+  };
+
+  const showWatchList = () => {
+    console.log("yo yo ", globalState.watchList);
+    return globalState.watchList.map((item, index) => {
+      return (
+        <div className="account__watch-video" key={index}>
+          <img src={item.mediaUrl} alt=""></img>
+          <div className="account__watch-overlay">
+            <div className="account__watch-buttons">
+              <div
+                className="account__watch-circle"
+                onClick={() => watchMedia(`/${item.mediaType}/${item.mediaId}`)}
+              >
+                <i className="fas fa-play" />
+              </div>
+              <div
+                className="account__watch-circle"
+                onClick={() => globalState.removeFromList(item.mediaId)}
+              >
+                <i className="fas fa-times" />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  const signOut = () => {
+    ls.remove("users");
+    ls.remove("activeUID");
+    router.push("/create");
   };
 
   return (
@@ -20,27 +70,10 @@ const Account = (props) => {
       <div className="account__details">
         <div className="account__title">My List</div>
         <div className="account__watch-list">
-          {loopComp(
-            <div className="account__watch-video">
-              <img
-                src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg"
-                alt=""
-              />
-              <div className="account__watch-overlay">
-                <div className="account__watch-buttons">
-                  <div className="account__watch-circle">
-                    <i className="fas fa-play" />
-                  </div>
-                  <div className="account__watch-circle">
-                    <i className="fas fa-times" />
-                  </div>
-                </div>
-              </div>
-            </div>,
-            3
-          )}
+          {watchList ? showWatchList() : ""}
         </div>
       </div>
+
       <div className="account__menu">
         <ul className="account__main">
           <li>
@@ -49,13 +82,15 @@ const Account = (props) => {
             </a>
           </li>
         </ul>
-        <div className="side-nav__divider" />
+
+        <div className="side-nav__divider"></div>
+
         <ul className="account__main">
-          <li>
-            <a href="/">Account</a>
+          <li onClick={signOut}>
+            <a>Account</a>
           </li>
-          <li>
-            <a href="/">Sign Out</a>
+          <li onClick={signOut}>
+            <a>Sign Out</a>
           </li>
         </ul>
       </div>

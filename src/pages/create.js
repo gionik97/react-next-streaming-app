@@ -21,8 +21,6 @@ export default function CreateUser() {
       users.push(user);
       ls("users", users);
       router.push("/login");
-      console.log("users", users);
-      console.log("ls users", ls("users"));
     } else {
       users = ls("users");
       user = {
@@ -32,8 +30,6 @@ export default function CreateUser() {
       };
       users.push(user);
       ls("users", users);
-      console.log("users", users);
-      console.log("ls users", ls("users"));
       router.push("/login");
     }
   };

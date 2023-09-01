@@ -10,9 +10,6 @@ const AuthCheck = (component) => {
   let users = ls("users") !== null ? ls("users") : [];
 
   useEffect(() => {
-    // if (users.length >= 1) {
-    //   router.push("/login");
-    // }
     if (activeUID === null && users.length < 1) {
       router.push("/create");
     }

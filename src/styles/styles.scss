@@ -8,8 +8,14 @@
 @use "../../components/ui/SearchModal/search-modal";
 @use "../../components/ui/Login/login";
 @use "../../components/ui/MediaRow/media-row";
+@use "../../components/ui/Placeholder/placeholder";
+@use "../../components/ui/GenreNav/genre-nav";
 
 html,
 body {
   background: black;
+}
+
+.hide-comp {
+  display: none;
 }
