@@ -17,8 +17,6 @@ const CastInfo = (props) => {
       .then(function (response) {
         setCredits(response.data);
         setLoadingData(false);
-        // console.log("success response for cast and crew");
-        // console.log("response", response);
       })
       .catch(function (error) {
         console.log("error response for cast and crew");
@@ -28,7 +26,7 @@ const CastInfo = (props) => {
 
   const showCast = () => {
     if (loadingData !== true) {
-      return credits.cast.map((item, index) => {
+      return credits.cast.slice(0, 5).map((item, index) => {
         return (
           <ul className="cast-info__crew" key={index}>
             <li>{item.character}</li>
@@ -43,7 +41,7 @@ const CastInfo = (props) => {
 
   const showCrew = () => {
     if (loadingData !== true) {
-      return credits.crew.map((item, index) => {
+      return credits.crew.slice(0, 5).map((item, index) => {
         return (
           <ul className="cast-info__crew" key={index}>
             <li>{item.job}</li>
